@@ -1,0 +1,70 @@
+## Setting Up Hadoop Cluster for a Standalone System
+
+### Prerequisites
+- **Update System:** Ensure your system is up-to-date.
+- **Java Installation:** Java must be installed.
+- **Secure Shell Setup:** Install Secure Shell (SSH) client and server.
+- **Create Hadoop User Group:** Create a Hadoop user group with sudo privileges.
+
+### Installation Steps
+1. **Generate SSH Key Pairs:**
+    ```bash
+    ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+    ```
+
+2. **Append Public Keys:**
+    ```bash
+    cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+    ```
+
+3. **Verify SSH Authentication:**
+    ```bash
+    ssh localhost
+    ```
+
+4. **Download Hadoop:**
+    ```bash
+    wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz
+    ```
+
+5. **Extract Hadoop:**
+    ```bash
+    tar xzf hadoop-3.3.6.tar.gz
+    ```
+
+### Configuration
+1. **Java Environment Variables:**
+    - Configure Java environment variables in `.bashrc`.
+    - Activate the environment variables.
+
+2. **Configure hadoop-env.sh:**
+    ```bash
+    sudo nano $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+    ```
+
+3. **Configure core-site.xml:**
+    Edit the configuration file `core-site.xml`.
+
+4. **Configure hdfs-site.xml:**
+    Edit the configuration file `hdfs-site.xml`.
+
+5. **Configure yarn-site.xml:**
+    Edit the configuration file `yarn-site.xml`.
+
+6. **Configure mapred-site.xml:**
+    Edit the configuration file `mapred-site.xml`.
+
+### Directory Setup
+- Make directories for HDFS, Namenode, and Datanode.
+
+### Launching Hadoop
+1. **Start DFS (Distributed File System):**
+   Start the Hadoop cluster.
+2. **Start YARN Service:**
+   Start the YARN service.
+3. **Check Installation:**
+   Use `jps` command to verify the installation. Ensure services like SecondaryNameNode, NodeManager, ResourceManager, NameNode, and DataNode are running.
+
+### Accessing Components
+- Access Namenode and Resource Manager.
+- Test by moving a local file to HDFS.
